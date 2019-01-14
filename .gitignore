@@ -73,6 +73,7 @@ Temporary Items
 ApplicationConfig.java
 deployScript
 persistence.xml
+package-lock.json
 
 ### Maven ###
 target/
