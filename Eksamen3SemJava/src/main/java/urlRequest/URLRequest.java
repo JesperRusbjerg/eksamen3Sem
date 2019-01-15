@@ -17,7 +17,6 @@ public class URLRequest {
         connection.setRequestProperty("Accept", "application/json;charset=UTF-8");
         connection.setRequestProperty("User-Agent", "server");
 
-        //waits 60 seconds
         connection.setConnectTimeout(4 * 1000);
         connection.connect();
 
