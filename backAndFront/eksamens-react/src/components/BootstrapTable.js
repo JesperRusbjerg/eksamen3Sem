@@ -20,7 +20,6 @@ const options = {
     const toFilter = ["Name"]
     const toFilterNumber = [""]
 
-    //TO Change
     const columns = c.map((c) => {
         const newCol = {
         dataField: c,
