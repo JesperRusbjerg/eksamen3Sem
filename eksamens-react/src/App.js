@@ -9,12 +9,34 @@ class App extends Component {
       <div>
         <Router>
           <Switch>
-            <Route path="/" render={(props) => <div>TEST</div>} />
+            <Route path="/" render={(props) => <Test {...props}/>} />
           </Switch>
         </Router>
       </div>
     );
   }
+}
+
+class Test extends Component{
+  constructor(props){
+    super(props)
+    this.state = {msg: "hejsa P"}
+  }
+
+
+clicked = () =>{
+  this.setState({msg: "ludeerrrr"})
+}
+
+render(){
+  return(
+    <div>
+      <Test2 hej={this.state.msg}/>
+      <button onClick={this.clicked}> click me</button>
+    </div>
+  )
+}
+
 }
 
 
