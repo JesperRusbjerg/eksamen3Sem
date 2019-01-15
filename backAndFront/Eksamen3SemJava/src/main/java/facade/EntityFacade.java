@@ -5,7 +5,10 @@
  */
 package facade;
 
+import dto.ExampleDTO;
 import entity.EntityExample;
+import exception.EksamenException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -44,6 +47,7 @@ public class EntityFacade<T> {
     }
 
     public T createEntity(T t) {
+        checkValidInput(t);
         EntityManager em = getEm();
 
         try {
@@ -57,6 +61,10 @@ public class EntityFacade<T> {
     }
 
     public T findEntityByValue(String search, String value) {
+        if (checkIfValidString(search) || checkIfValidString(value)) {
+            throw new IllegalArgumentException("String cant be empty");
+        }
+
         EntityManager em = getEm();
 
         try {
@@ -69,6 +77,9 @@ public class EntityFacade<T> {
     }
 
     public T deleteEntity(int id) {
+        if (id < 1) {
+            throw new IllegalArgumentException("id cant be below 1");
+        }
         EntityManager em = getEm();
 
         try {
@@ -83,6 +94,7 @@ public class EntityFacade<T> {
     }
 
     public T editEntity(T t) {
+        checkValidInput(t);
         EntityManager em = getEm();
 
         try {
@@ -93,6 +105,28 @@ public class EntityFacade<T> {
         } finally {
             em.close();
         }
+    }
+
+    private void checkValidInput(T t) {
+        if (t == null) {
+            throw new IllegalArgumentException("Type cannot be null");
+        }
+    }
+
+    private boolean checkIfValidString(String string) {
+        return (string == null || string.trim().equals(""));
+    }
+
+    public static ExampleDTO convertToDTO(EntityExample entity) {
+        return new ExampleDTO(entity);
+    }
+
+    public static List<ExampleDTO> convertToListDTO(List<EntityExample> entityList) {
+        List<ExampleDTO> dtoList = new ArrayList();
+        for (EntityExample entity : entityList) {
+            dtoList.add(convertToDTO(entity));
+        }
+        return dtoList;
     }
 
     public static void main(String[] args) {
@@ -108,7 +142,7 @@ public class EntityFacade<T> {
 //        facade.createResource(ex3);
 //        facade.createResource(ex4);
 //        facade.createResource(ex5);
-//        System.out.println(facade.findByValue("name", "name4"));
+//        System.out.println(facade.findEntityByValue("name", "name4"));
 //        System.out.println(facade.deleteEntity(3));
 //        EntityExample ee = facade.findByValue("email", "email5");
 //        ee.setEmail("ViTesterLige");

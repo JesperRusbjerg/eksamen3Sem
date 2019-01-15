@@ -9,23 +9,23 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 @Provider
-public class ExampleException extends Exception implements ExceptionMapper<ExampleException> {
+public class EksamenException extends Exception implements ExceptionMapper<EksamenException> {
 
     private int errorCode;
     private String errorTitle;
     private String errorMessage;
 
-    public ExampleException(int errorCode, String errorTitle, String errorMessage) {
+    public EksamenException(int errorCode, String errorTitle, String errorMessage) {
         this.errorCode = errorCode;
         this.errorTitle = errorTitle;
         this.errorMessage = errorMessage;
     }
 
-    public ExampleException(String errorTitle, String errorMessage) {
+    public EksamenException(String errorTitle, String errorMessage) {
         this(400, errorTitle, errorMessage);
     }
 
-    public ExampleException() {
+    public EksamenException() {
     }
 
     public int getErrorCode() {
@@ -41,7 +41,7 @@ public class ExampleException extends Exception implements ExceptionMapper<Examp
     }
 
     @Override
-    public Response toResponse(ExampleException exception) {
+    public Response toResponse(EksamenException exception) {
         return makeErrRes(exception.getErrorTitle(), exception.getErrorMessage(), exception.getErrorCode());
     }
 

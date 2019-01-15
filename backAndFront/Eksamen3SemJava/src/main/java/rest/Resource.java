@@ -19,16 +19,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-
 @Path("resource")
 public class Resource {
 
-    private final EntityFacade<> facade;
-    private final Gson gson;
-    
-    
+    private EntityFacade<> facade;
+    private Gson gson;
+
     public Resource() {
-        this.facade = new EntityFacade(.class);
+        this.facade = new EntityFacade(.class
+        );
         
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
@@ -36,9 +35,9 @@ public class Resource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getResource() {
- 
+
         String jsonReturn = "";
-        
+
         return Response.ok().entity(jsonReturn).build();
     }
 
@@ -46,31 +45,30 @@ public class Resource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response postResource(String json) {
-        
+
         String jsonReturn = "";
-        
+
         return Response.ok().entity(jsonReturn).build();
     }
-   
+
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     //@Produces(MediaType.APPLICATION_JSON)
     public Response putJson(String json) {
-     
-        
+
         String jsonReturn = "";
-        
-       return Response.ok().entity(jsonReturn).build();
+
+        return Response.ok().entity(jsonReturn).build();
     }
-    
+
     @DELETE
     @Path("{id}")
     // @Consumes(MediaType.APPLICATION_JSON)
-     @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response deleteJson(@PathParam("id") int id) {
-        
+
         String json = "i will delete " + id;
-        
-    return Response.ok().entity(json).build();
+
+        return Response.ok().entity(json).build();
     }
 }

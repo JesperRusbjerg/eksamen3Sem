@@ -5,6 +5,11 @@
  */
 package dto;
 
+import entity.EntityExample;
+
 public class ExampleDTO {
+
+    public ExampleDTO(EntityExample entity) {
+    }
     
 }
