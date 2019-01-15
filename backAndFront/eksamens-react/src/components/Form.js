@@ -22,12 +22,14 @@ export default class MyForm extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { data: props.data, type: props.type }
+        const data = JSON.parse(JSON.stringify(props.data))
+        this.state = { data, type: props.type }
     }
 
     componentWillReceiveProps(newProps) {
         const { data, type } = newProps;
-        this.setState({ data, type })
+        data = JSON.parse(JSON.stringify(data));
+        this.setState({ data, type });
     }
 
 

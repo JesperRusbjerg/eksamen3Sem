@@ -9,7 +9,7 @@ class App extends Component {
       <div>
         <Router>
           <Switch>
-            <Route path="/" render={(props) => <Test {...props}/>} />
+            <Route path="/" render={(props) => <Test {...props} />} />
           </Switch>
         </Router>
       </div>
@@ -25,13 +25,13 @@ class Test extends Component{
 
 
 clicked = () =>{
-  this.setState({msg: "ludeerrrr"})
+  this.setState({msg: "Hejsa M!"})
 }
 
 render(){
   return(
     <div>
-      <Test2 hej={this.state.msg}/>
+      <p>{this.state.msg} </p>
       <button onClick={this.clicked}> click me</button>
     </div>
   )
