@@ -11,10 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author Jesper
- */
 @Entity
 public class EntityExample implements Serializable {
 
@@ -22,10 +18,8 @@ public class EntityExample implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    public Integer getId() {
-        return id;
+    public EntityExample() {
     }
 
-   
     
 }

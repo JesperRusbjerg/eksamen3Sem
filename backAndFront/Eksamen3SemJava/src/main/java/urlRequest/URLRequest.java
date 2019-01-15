@@ -38,10 +38,4 @@ public class URLRequest {
         return null;
  }
  
-    public static void main(String[] args) throws Exception {
-        
-        URLRequest url = new URLRequest();
-        System.out.println(url.request("https://jrusbjerg.dk/ExamCarBackendJesper/api/car"));
-    }
-    
 }

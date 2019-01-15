@@ -8,8 +8,6 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import facade.EntityFacade;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.Produces;
@@ -25,15 +23,13 @@ import javax.ws.rs.core.Response;
 @Path("resource")
 public class Resource {
 
-    private final EntityFacade facade;
+    private final EntityFacade<> facade;
     private final Gson gson;
     
     
-    @Context
-    private UriInfo context;
-    
     public Resource() {
-        this.facade = new EntityFacade();
+        this.facade = new EntityFacade(.class);
+        
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
