@@ -22,13 +22,10 @@ import javax.ws.rs.core.Response;
 @Path("resource")
 public class Resource {
 
-    private EntityFacade<> facade;
+    private EntityFacade<> facade = new EntityFacade(.class);
     private Gson gson;
 
     public Resource() {
-        this.facade = new EntityFacade(.class
-        );
-        
         this.gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
