@@ -5,6 +5,10 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import filterFactory, { textFilter, numberFilter } from 'react-bootstrap-table2-filter';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 
+
+//Data is in the format of an array with object as data
+//labels has the format of a array with string such as ["First Name", "Last Name", "Age"]
+
 const options = {
     sizePerPageList: 
     [{
@@ -56,7 +60,7 @@ const options = {
 
 export default function BsTable({labels, data}){
 
-    if(data == null){
+    if(data == null || data.length < 1){
         return(
             <img src={loadGif} alt="loading..." />
         )

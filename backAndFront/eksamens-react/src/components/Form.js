@@ -28,8 +28,8 @@ export default class MyForm extends Component {
 
     componentWillReceiveProps(newProps) {
         const { data, type } = newProps;
-        data = JSON.parse(JSON.stringify(data));
-        this.setState({ data, type });
+        const newData = JSON.parse(JSON.stringify(data));
+        this.setState({ data: newData, type });
     }
 
 
